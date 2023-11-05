@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/buscar"
+        android:icon="@drawable/baseline_search_24"
+        android:title="Buscar"
+        app:showAsAction="always"
+        app:actionViewClass="android.widget.SearchView" />
+    <item
+        android:id="@+id/recordatorio"
+        android:title="Recordatorio"
+        android:icon="@drawable/recordatorio"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/cursos"
+        android:title="Cursos"
+        android:icon="@drawable/baseline_collections_bookmark_24"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/TipEven"
+        android:title="Tipo de Evento"
+        android:icon="@drawable/baseline_circle_24"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/dia"
+        android:title="Modo Dia"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/semana"
+        android:title="Modo Semana"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/mes"
+        android:title="Modo Mes"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/horasDedicadas"
+        android:title="Horas Dedicdas"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/horasLibres"
+        android:title="Horas Libres"
+        app:showAsAction="never"/>
+</menu>

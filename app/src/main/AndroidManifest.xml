@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Tarea4"
+        tools:targetApi="31">
+        <activity
+            android:name=".HorasLibresActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HorasDedicadasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TipoEventoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CursoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RecordatorioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditarTipoEventoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditarCursoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditarRecordatorioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditarEventoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VerTipoEventoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VerCursoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VerRecordatorioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VerEventoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AgregarTipoEventoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AgregarCursoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AgregarRecordatorioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AgregarEventoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ModoMesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ModoSemanaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ModoDiaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PrincipalActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
