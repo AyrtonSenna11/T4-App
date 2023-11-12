@@ -1,4 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:title="Modo">
+    <menu>
+        <item
+            android:id="@+id/dia"
+            android:icon="@drawable/baseline_calendar_today_24"
+            android:title="Dia"/>
+        <item
+            android:id="@+id/semana"
+            android:icon="@drawable/baseline_calendar_view_day_24"
+            android:title="Semana"/>
+        <item
+            android:id="@+id/mes"
+            android:icon="@drawable/baseline_calendar_view_month_24"
+            android:title="Mes"/>
+    </menu>
+</item>
+    <item
+        android:title="Resumen de Horas">
+        <menu>
+            <item
+                android:id="@+id/horasDedicadas"
+                android:icon="@drawable/baseline_timeline_24"
+                android:title="Horas Dedicadas"/>
+            <item
+                android:id="@+id/horasLibres"
+                android:icon="@drawable/baseline_timelapse_24"
+                android:title="Horas Libres"/>
+        </menu>
+
+    </item>
 
 </menu>

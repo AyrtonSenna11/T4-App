@@ -22,24 +22,5 @@
         android:title="Tipo de Evento"
         android:icon="@drawable/baseline_circle_24"
         app:showAsAction="always"/>
-    <item
-        android:id="@+id/dia"
-        android:title="Modo Dia"
-        app:showAsAction="never"/>
-    <item
-        android:id="@+id/semana"
-        android:title="Modo Semana"
-        app:showAsAction="never"/>
-    <item
-        android:id="@+id/mes"
-        android:title="Modo Mes"
-        app:showAsAction="never"/>
-    <item
-        android:id="@+id/horasDedicadas"
-        android:title="Horas Dedicdas"
-        app:showAsAction="never"/>
-    <item
-        android:id="@+id/horasLibres"
-        android:title="Horas Libres"
-        app:showAsAction="never"/>
+
 </menu>
