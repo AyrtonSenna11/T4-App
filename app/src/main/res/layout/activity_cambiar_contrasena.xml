@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".CambiarContrasenaActivity">
+    tools:context=".Login.CambiarContrasenaActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -43,18 +43,23 @@
                 android:text="Email:"
                 android:textSize="20dp"
                 android:textStyle="normal" />
-            <EditText
-                android:id="@+id/CambContraEmail"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:layout_marginTop="5dp"
-                android:hint="Ingrese Correo"
-                android:textColor="@color/black"
-                android:inputType="textEmailAddress"
-                android:fontFamily="@font/open_sans_light"
-                android:textStyle="normal"/>
-
+                android:layout_height="match_parent"
+                app:startIconDrawable="@drawable/baseline_email_24"
+                >
+                <EditText
+                    android:id="@+id/CambContraEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:layout_marginTop="5dp"
+                    android:hint="Ingrese Correo"
+                    android:textColor="@color/black"
+                    android:inputType="textEmailAddress"
+                    android:fontFamily="@font/open_sans_light"
+                    android:textStyle="normal"/>
+            </com.google.android.material.textfield.TextInputLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

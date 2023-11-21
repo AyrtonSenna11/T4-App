@@ -1,3 +1,4 @@
+/*
 package com.example.tarea4;
 
 import android.os.Bundle;
@@ -44,4 +45,4 @@ public class SecondFragment extends Fragment {
         binding = null;
     }
 
-}
+}*/

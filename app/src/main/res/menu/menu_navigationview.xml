@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 <item
-    android:title="Modo">
+    android:title="Modo de Ver">
     <menu>
         <item
             android:id="@+id/dia"
@@ -30,6 +30,38 @@
                 android:title="Horas Libres"/>
         </menu>
 
+    </item>
+    <item
+        android:title="Ver"
+        >
+        <menu>
+            <item
+                android:id="@+id/evento"
+                android:title="Eventos"
+                android:icon="@drawable/baseline_calendar_month_24"
+                />
+            <item
+                android:id="@+id/recordatorio"
+                android:title="Recordatorios"
+                android:icon="@drawable/recordatorio"
+                />
+            <item
+                android:id="@+id/cursos"
+                android:title="Cursos"
+                android:icon="@drawable/baseline_collections_bookmark_24"
+                />
+            <item
+                android:id="@+id/TipEven"
+                android:title="Tipos de Eventos"
+                android:icon="@drawable/baseline_circle_24"
+                />
+        </menu>
+    </item>
+    <item
+        android:id="@+id/cerrarsesion"
+        android:title="Cerrar Sesion"
+        android:icon="@drawable/baseline_logout_24"
+        >
     </item>
 
 </menu>

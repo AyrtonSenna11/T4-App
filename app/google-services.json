@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "795874449491",
+    "project_id": "t4-calendario",
+    "storage_bucket": "t4-calendario.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:795874449491:android:45cfae9a9b43261a8ecea6",
+        "android_client_info": {
+          "package_name": "com.example.tarea4"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmZIZVKg21FeFAMGkJqi2P360y01OO5xo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
