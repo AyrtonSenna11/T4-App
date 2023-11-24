@@ -2,6 +2,8 @@ package com.example.tarea4;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.tarea4.Fragments.Ver.RecordatorioFragment;
 import com.example.tarea4.Fragments.Ver.TipoEventoFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -24,6 +27,8 @@ import java.util.Map;
 public class AgregarTipoEventoActivity extends AppCompatActivity {
     private int PrimaryKey=1;
     FirebaseFirestore base_datos;
+    FragmentManager fm;
+    FragmentTransaction ft;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,8 +59,10 @@ public class AgregarTipoEventoActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
                             finish();
-                            Intent guardar = new Intent(AgregarTipoEventoActivity.this, TipoEventoFragment.class);
-                            startActivity(guardar);
+                            fm=getSupportFragmentManager();
+                            ft=fm.beginTransaction();
+                            ft.add(R.id.ContenedorFragmentos,new TipoEventoFragment());
+                            ft.commit();
                             Toast.makeText(AgregarTipoEventoActivity.this,"Se agrego nuevo tipo de evento.",Toast.LENGTH_SHORT).show();
                         }
                     }).addOnFailureListener(new OnFailureListener() {

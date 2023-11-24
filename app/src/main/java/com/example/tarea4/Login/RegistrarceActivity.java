@@ -118,7 +118,7 @@ public class RegistrarceActivity extends AppCompatActivity{
               usuario.put("fechaNac_usu",obtencioAño);
               usuario.put("correo_usua",email);
               usuario.put("contraseña_usua",password);
-              usuario.put("estado_usua","1");
+              usuario.put("estado_usua","0");
               base_datos.collection("Usuarios").document(id).set(usuario).addOnSuccessListener(new OnSuccessListener<Void>() {
                   @Override
                   public void onSuccess(Void unused) {

@@ -2,6 +2,8 @@ package com.example.tarea4;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.tarea4.Fragments.Ver.CursoFragment;
+import com.example.tarea4.Fragments.Ver.PrincipalFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,6 +31,8 @@ public class AgregarCursoActivity extends AppCompatActivity {
     Button guardar;
     FirebaseFirestore base_datos;
     private static int PrimaryKey = 1;
+    FragmentManager fm;
+    FragmentTransaction ft;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,15 +58,17 @@ public class AgregarCursoActivity extends AppCompatActivity {
                     Map<String, Object>cursos=new HashMap<>();
                     cursos.put("id_cur",id);
                     cursos.put("nombre_cur",course);
-                    cursos.put("nomDocete_cur",teacher);
+                    cursos.put("nomDocente_cur",teacher);
                     cursos.put("descripcion_cur",description);
                     cursos.put("id_usu", FirebaseAuth.getInstance().getCurrentUser().getUid());
                     base_datos.collection("Cursos").add(cursos).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
                             finish();
-                            Intent vercursos = new Intent(AgregarCursoActivity.this, CursoFragment.class);
-                            startActivity(vercursos);
+                            fm=getSupportFragmentManager();
+                            ft=fm.beginTransaction();
+                            ft.add(R.id.ContenedorFragmentos,new CursoFragment());
+                            ft.commit();
                             Toast.makeText(AgregarCursoActivity.this,"Se agrego nuevo curso.",Toast.LENGTH_SHORT).show();
                         }
                     }).addOnFailureListener(new OnFailureListener() {

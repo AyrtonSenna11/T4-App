@@ -4,20 +4,26 @@ import static android.icu.text.Transliterator.getDisplayName;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.tarea4.Fragments.Ver.CursoFragment;
 import com.example.tarea4.Fragments.Ver.RecordatorioFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,8 +33,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AgregarRecordatorioActivity extends AppCompatActivity {
@@ -45,8 +53,12 @@ public class AgregarRecordatorioActivity extends AppCompatActivity {
 
     TextView Tvfecha,Tvhora;
     ImageView close;
+    Spinner repe;
+    String itemRepeReco;
     FirebaseFirestore base_datos;
 
+    FragmentManager fm;
+    FragmentTransaction ft;
     private int PrimaryKey=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,13 +69,35 @@ public class AgregarRecordatorioActivity extends AppCompatActivity {
         Tvfecha.setText(new SimpleDateFormat("EE").format(fecha)+", "+dia+" de "+new SimpleDateFormat("MMM").format(fecha)+" de "+año);
         Tvhora=findViewById(R.id.TvHoraInicioReco);
         Tvhora.setText(dfhora.format(fecha));
+        repe=findViewById(R.id.SpReco);
+        List<String> tiprepeReco = Arrays.asList(
+                "No repetir",
+                "Diario",
+                "Semanal",
+                "Mensual",
+                "Anual"
+        );
+        ArrayAdapter<String> adaptadorrepeticionReco = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, tiprepeReco);
+        repe.setAdapter(adaptadorrepeticionReco);
+
+        repe.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                itemRepeReco= parent.getSelectedItem().toString().trim();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // No hacer nada
+            }
+        });
         Button guardar =findViewById(R.id.BtnGuardarReco);
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (NombreRecor.length()==0){
                     Toast.makeText(AgregarRecordatorioActivity.this,"Ingrese un nombre de recordatorio.",Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     int id = PrimaryKey++;
                     String titleRec=NombreRecor.getText().toString().trim();
                     String date=Tvfecha.getText().toString().trim();
@@ -73,14 +107,17 @@ public class AgregarRecordatorioActivity extends AppCompatActivity {
                     recordatorio.put("nombre_rec",titleRec);
                     recordatorio.put("fecha_rec",date);
                     recordatorio.put("hora_rec",hour);
+                    recordatorio.put("repeticion_rec",itemRepeReco);
                     recordatorio.put("id_usu", FirebaseAuth.getInstance().getCurrentUser().getUid());
 
                     base_datos.collection("Recordatorios").add(recordatorio).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
                             finish();
-                            Intent verrecordatorio = new Intent(AgregarRecordatorioActivity.this, RecordatorioFragment.class);
-                            startActivity(verrecordatorio);
+                            fm=getSupportFragmentManager();
+                            ft=fm.beginTransaction();
+                            ft.add(R.id.ContenedorFragmentos,new RecordatorioFragment());
+                            ft.commit();
                             Toast.makeText(AgregarRecordatorioActivity.this,"Se agrego nuevo recordatorio.",Toast.LENGTH_SHORT).show();
                         }
                     }).addOnFailureListener(new OnFailureListener() {

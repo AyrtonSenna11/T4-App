@@ -251,7 +251,7 @@
                     app:srcCompat="@drawable/baseline_doorbell_24" />
 
                 <Spinner
-                    android:id="@+id/spinner5"
+                    android:id="@+id/SpNotify"
                     android:layout_width="200dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp" />
@@ -277,7 +277,7 @@
                     android:layout_height="30dp"
                     android:src="@drawable/baseline_circle_24"/>
                 <Spinner
-                    android:id="@+id/spinner2"
+                    android:id="@+id/SpTipEve"
                     android:layout_width="200dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp" />
@@ -303,7 +303,7 @@
                     android:layout_height="30dp"
                     android:src="@drawable/baseline_collections_bookmark_24" />
                 <Spinner
-                    android:id="@+id/spinner3"
+                    android:id="@+id/SpCursos"
                     android:layout_width="200dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"/>
