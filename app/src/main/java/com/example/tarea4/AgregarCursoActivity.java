@@ -31,8 +31,6 @@ public class AgregarCursoActivity extends AppCompatActivity {
     Button guardar;
     FirebaseFirestore base_datos;
     private static int PrimaryKey = 1;
-    FragmentManager fm;
-    FragmentTransaction ft;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,10 +63,6 @@ public class AgregarCursoActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
                             finish();
-                            fm=getSupportFragmentManager();
-                            ft=fm.beginTransaction();
-                            ft.add(R.id.ContenedorFragmentos,new CursoFragment());
-                            ft.commit();
                             Toast.makeText(AgregarCursoActivity.this,"Se agrego nuevo curso.",Toast.LENGTH_SHORT).show();
                         }
                     }).addOnFailureListener(new OnFailureListener() {

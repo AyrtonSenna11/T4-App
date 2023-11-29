@@ -35,7 +35,7 @@ public class PrincipalFragment extends Fragment {
         FirestoreRecyclerOptions<Eventos>firestoreRecyclerOptions=new FirestoreRecyclerOptions.Builder<Eventos>().setQuery(query, Eventos.class).build();
         GridLayoutManager estilo=new GridLayoutManager(getContext(),1);
         RvEventos.setLayoutManager(estilo);
-        adaptador = new EventosAdapter(firestoreRecyclerOptions);
+        adaptador = new EventosAdapter(firestoreRecyclerOptions,this);
         adaptador.notifyDataSetChanged();
         RvEventos.setAdapter(adaptador);
         return ver;

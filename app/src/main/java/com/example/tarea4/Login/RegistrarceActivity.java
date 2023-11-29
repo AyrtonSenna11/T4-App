@@ -42,6 +42,7 @@ public class RegistrarceActivity extends AppCompatActivity{
     int año = Integer.parseInt(new SimpleDateFormat("YYYY").format(fecha));
     int mes = Integer.parseInt(new SimpleDateFormat("MM").format(fecha));
     int dia = Integer.parseInt(new SimpleDateFormat("dd").format(fecha));
+    Date fechanacusu,fechaactual=new Date(año,mes,dia);
     FirebaseFirestore base_datos;
     FirebaseAuth autenticacion;
 
@@ -60,7 +61,7 @@ public class RegistrarceActivity extends AppCompatActivity{
         Nombre= findViewById(R.id.AddRegisNombre);
         Apellidos=findViewById(R.id.AddRegisApellidos);
         FechaNac = findViewById(R.id.AddRegisFecha);
-        FechaNac.setText(dia+"/"+mes+"/"+año);
+        FechaNac.setText(String.format("%02d",dia)+"/"+String.format("%02d",mes)+"/"+año);
         Correo=findViewById(R.id.AddRegisCorreo);
         Contraseña = findViewById(R.id.AddRegisContraseña);
         Mostrar =findViewById(R.id.TvMostCondi);
@@ -96,10 +97,6 @@ public class RegistrarceActivity extends AppCompatActivity{
                 }else if (!(Contraseña.getText().toString()).matches("^(?=.*[0-9])(?=.*[A-Z]).{8,}$")) {
                     Mostrar.setText("La contraseña debe tener al menos 1 número, 1 letra mayúscula y debe ser de al menos 8 caracteres");
                 }else {
-                    /*Toast.makeText(RegistrarceActivity.this, "Se ha registrado correctamente", Toast.LENGTH_SHORT).show();
-                    Intent iniciarSession = new Intent(RegistrarceActivity.this, LoginActivity.class);
-                    startActivity(iniciarSession);
-                    finish();*/
                     enviarusuario(name,lastname,ObtencioAño,email,password);
                 }
             }
@@ -110,12 +107,14 @@ public class RegistrarceActivity extends AppCompatActivity{
       autenticacion.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
           @Override
           public void onComplete(@NonNull Task<AuthResult> task) {
+              long edad=(fechaactual.getYear()-fechanacusu.getYear());
               String id =autenticacion.getCurrentUser().getUid();
               Map<String,Object>usuario =new HashMap<>();
               usuario.put("id_usu",id);
               usuario.put("nombre_usu",name);
               usuario.put("apellidos_usua",lastname);
               usuario.put("fechaNac_usu",obtencioAño);
+              usuario.put("edad_usu",edad);
               usuario.put("correo_usua",email);
               usuario.put("contraseña_usua",password);
               usuario.put("estado_usua","0");
@@ -147,7 +146,8 @@ public class RegistrarceActivity extends AppCompatActivity{
             DatePickerDialog di = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                    FechaNac.setText(dayOfMonth+"/"+(month+1)+"/"+year);
+                    FechaNac.setText(String.format("%02d",dayOfMonth)+"/"+String.format("%02d",month+1)+"/"+year);
+                    fechanacusu=new Date(year,month,dayOfMonth);
                 }
             },año,(mes-1),dia);
             di.show();

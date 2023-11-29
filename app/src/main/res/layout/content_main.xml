@@ -5,11 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PrincipalActivity">
+
     <FrameLayout
         android:id="@+id/ContenedorFragmentos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-    />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/GupoAgregar"
         android:layout_width="wrap_content"

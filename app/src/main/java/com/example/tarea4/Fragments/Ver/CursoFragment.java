@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +37,7 @@ public class CursoFragment extends Fragment {
         FirestoreRecyclerOptions<Cursos> froc=new FirestoreRecyclerOptions.Builder<Cursos>().setQuery(query, Cursos.class).build();
         GridLayoutManager estilo=new GridLayoutManager(getContext(),1);
         RvCursos.setLayoutManager(estilo);
-        adaptador=new CursosAdapter(froc);
+        adaptador=new CursosAdapter(froc, this);
         adaptador.notifyDataSetChanged();
         RvCursos.setAdapter(adaptador);
         return ver;

@@ -56,9 +56,6 @@ public class AgregarRecordatorioActivity extends AppCompatActivity {
     Spinner repe;
     String itemRepeReco;
     FirebaseFirestore base_datos;
-
-    FragmentManager fm;
-    FragmentTransaction ft;
     private int PrimaryKey=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +66,7 @@ public class AgregarRecordatorioActivity extends AppCompatActivity {
         Tvfecha.setText(new SimpleDateFormat("EE").format(fecha)+", "+dia+" de "+new SimpleDateFormat("MMM").format(fecha)+" de "+año);
         Tvhora=findViewById(R.id.TvHoraInicioReco);
         Tvhora.setText(dfhora.format(fecha));
+        base_datos=FirebaseFirestore.getInstance();
         repe=findViewById(R.id.SpReco);
         List<String> tiprepeReco = Arrays.asList(
                 "No repetir",
@@ -114,10 +112,6 @@ public class AgregarRecordatorioActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
                             finish();
-                            fm=getSupportFragmentManager();
-                            ft=fm.beginTransaction();
-                            ft.add(R.id.ContenedorFragmentos,new RecordatorioFragment());
-                            ft.commit();
                             Toast.makeText(AgregarRecordatorioActivity.this,"Se agrego nuevo recordatorio.",Toast.LENGTH_SHORT).show();
                         }
                     }).addOnFailureListener(new OnFailureListener() {

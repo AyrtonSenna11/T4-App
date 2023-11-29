@@ -1,7 +1,7 @@
 package com.example.tarea4.ModeloRv;
 
 public class Eventos {
-    String titulo_eve, fechaIni_eve, fechaFin_eve, horaIni_eve, horaFin_eve, repeticion_eve, notificacion_eve, tipoEvento_eve, curso_eve, id_usu;
+    String titulo_eve, fechaIni_eve, fechaFin_eve, horaIni_eve, horaFin_eve, repeticion_eve, notificacion_eve, id_tip, id_cur, id_usu;
     int id_eve;
 
     public Eventos(){
@@ -16,8 +16,8 @@ public class Eventos {
         this.horaFin_eve = horaFin_eve;
         this.repeticion_eve = repeticion_eve;
         this.notificacion_eve = notificacion_eve;
-        this.tipoEvento_eve = tipoEvento_eve;
-        this.curso_eve = curso_eve;
+        this.id_tip = tipoEvento_eve;
+        this.id_cur = curso_eve;
         this.id_usu = id_usu;
         this.id_eve = id_eve;
     }
@@ -78,20 +78,20 @@ public class Eventos {
         this.notificacion_eve = notificacion_eve;
     }
 
-    public String getTipoEvento_eve() {
-        return tipoEvento_eve;
+    public String getId_tip() {
+        return id_tip;
     }
 
-    public void setTipoEvento_eve(String tipoEvento_eve) {
-        this.tipoEvento_eve = tipoEvento_eve;
+    public void setId_tip(String id_tip) {
+        this.id_tip = id_tip;
     }
 
-    public String getCurso_eve() {
-        return curso_eve;
+    public String getId_cur() {
+        return id_cur;
     }
 
-    public void setCurso_eve(String curso_eve) {
-        this.curso_eve = curso_eve;
+    public void setId_cur(String id_cur) {
+        this.id_cur = id_cur;
     }
 
     public String getId_usu() {

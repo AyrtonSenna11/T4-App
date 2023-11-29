@@ -36,7 +36,7 @@ public class RecordatorioFragment extends Fragment {
         FirestoreRecyclerOptions<Recordatorios> fror=new FirestoreRecyclerOptions.Builder<Recordatorios>().setQuery(query, Recordatorios.class).build();
         GridLayoutManager estilo=new GridLayoutManager(getContext(),1);
         RvRecordatorios.setLayoutManager(estilo);
-        adaptador=new RecordatoriosAdapter(fror);
+        adaptador=new RecordatoriosAdapter(fror,this);
         adaptador.notifyDataSetChanged();
         RvRecordatorios.setAdapter(adaptador);
         return ver;

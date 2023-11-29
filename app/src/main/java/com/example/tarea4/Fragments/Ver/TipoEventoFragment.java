@@ -35,7 +35,7 @@ public class TipoEventoFragment extends Fragment {
         FirestoreRecyclerOptions<TipoEvento> frot=new FirestoreRecyclerOptions.Builder<TipoEvento>().setQuery(query, TipoEvento.class).build();
         GridLayoutManager estilo=new GridLayoutManager(getContext(),1);
         RvTipoEvento.setLayoutManager(estilo);
-        adaptador=new TipoEventoAdapter(frot);
+        adaptador=new TipoEventoAdapter(frot, this);
         adaptador.notifyDataSetChanged();
         RvTipoEvento.setAdapter(adaptador);
         return ver;
